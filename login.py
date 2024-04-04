@@ -1,9 +1,10 @@
- 
+import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
 import customtkinter
 from PIL import Image
 import pymysql
+from digiboard2 import DigitalWhiteboard
 
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("blue")
@@ -40,7 +41,13 @@ def GoToLogin():
             messagebox.showerror('Error','Invalid username or Password')
         else:
             messagebox.showinfo('Success','Successfully Logged In')
-            import digiboard
+            Login.destroy()
+            open_digital_whiteboard()  # Open the digital whiteboard
+
+def open_digital_whiteboard():
+    root = tk.Tk()
+    whiteboard = DigitalWhiteboard(root)
+    root.mainloop()           
 
 
 LoginFrame=customtkinter.CTkFrame(master=Login,
