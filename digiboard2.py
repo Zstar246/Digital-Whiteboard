@@ -56,6 +56,8 @@ class DigitalWhiteboard:
 
         self.clear_button = tk.Button(self.color_frame, text="Clear Screen", command=self.clear_canvas)
         self.clear_button.pack(side=tk.LEFT, padx=5, pady=5)
+        self.logout = tk.Button(self.color_frame, text="Logout",font=("Helvetica ",12), command=self.logout, borderwidth=0, background="darkgreen",foreground="white", activebackground="green")
+        self.logout.pack(side=tk.RIGHT, padx=5, pady=5)
 
         # self.insert_video_button = tk.Button(self.navbar, text="Insert Video", command=self.insert_video)
         # self.insert_video_button.pack(side=tk.LEFT, padx=5, pady=5)
@@ -93,6 +95,10 @@ class DigitalWhiteboard:
         self.prev_x, self.prev_y = None, None
         self.image_id = None
         self.video_inserted = tk.BooleanVar(value=False) 
+
+    def logout(self):
+        self.master.destroy()
+        import login
         
     def draw(self, event):
         if self.prev_x and self.prev_y:
